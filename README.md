@@ -5,15 +5,25 @@ Separate component to get information on the active window in X.
 
 In an attempt to be portable between operating systems.
 
+The user can install another package that provides the same interface.
+
 ### Internal details
 
 Use a fork of `python-libxdo`.
 
+There's another branch [user202729/getactivewindow-x at spawn-xdotool-xprop-process](https://github.com/user202729/getactivewindow-x/tree/spawn-xdotool-xprop-process)
+that uses subprocess, `xdotool` and `xprop`.
+
 ### API
 
-Currently there are only 2 functions.
+Currently there are only these functions.
 
+```python
+def active_window_id()->WindowID:
+def window_name(window_id: WindowID)->str:
+def window_class(window_id: WindowID)->tuple[str, ...]:
 ```
-def active_window_name()->str:
-def active_window_class()->tuple[str, ...]:
-```
+
+The window name should not (but may) change if the window ID is constant.
+
+Packages should not rely on `WindowID` type being `int`.
