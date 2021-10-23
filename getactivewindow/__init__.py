@@ -3,26 +3,16 @@ import subprocess
 import ast
 from typing import Union
 
+from xdo import Xdo
+x = Xdo()
+
 def _active_window_id()->int:
-	return int(subprocess.run(
-			["xdotool", "getwindowfocus"],
-			stdout=subprocess.PIPE,
-			check=True).stdout)
+	return x.get_focused_window()
 
 def active_window_name()->str:
-	return subprocess.run(
-			["xdotool", "getwindowfocus", "getwindowname"],
-			stdout=subprocess.PIPE,
-			check=True).stdout.decode('u8')
+	return x.get_window_name(_active_window_id()).decode('u8')
 
 def active_window_class()->tuple[str, ...]:
-	result: str=subprocess.run(
-			["xprop", "-id", str(_active_window_id()), "WM_CLASS"],
-			stdout=subprocess.PIPE,
-			check=True).stdout.decode('u8')
-	result=result.removeprefix("WM_CLASS(STRING) = ")
-	result_1: Union[str, tuple[str, ...]]=ast.literal_eval(result)
-	if isinstance(result_1, str):
-		return result_1,
-	else:
-		return result_1
+	result=bytes(x.get_window_property(_active_window_id(), b"WM_CLASS")).split(b"\0")
+	assert not result[-1]
+	return tuple(x.decode('u8') for x in result[:-1])

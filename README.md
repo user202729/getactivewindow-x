@@ -1,5 +1,5 @@
 # getactivewindow-x
-Separate component to get information on the active window in X. Requires the executable xdotool (and xprop to get the window class).
+Separate component to get information on the active window in X.
 
 ### Why?
 
@@ -7,12 +7,7 @@ In an attempt to be portable between operating systems.
 
 ### Internal details
 
-Use `xdotool` and `xprop`.
-
-* **Why not python-libxdo?**
-
-   Currently the library is (unfortunately) mostly unmaintained,
-   although the cost of spawning a process can be expensive.
+Use a fork of `python-libxdo`.
 
 ### API
 
