@@ -1,8 +1,13 @@
-## Somewhat deprecated, maybe use `pywinctl` instead or one of the solutions in https://stackoverflow.com/q/10266281/5267751
+# getactivewindow-x
+
+# Deprecated
+
+maybe use `pywinctl` instead or one of the solutions in https://stackoverflow.com/q/10266281/5267751
+
+See also https://github.com/Kalmat/PyWinCtl/issues/64
 
 -----
 
-# getactivewindow-x
 Separate component to get information on the active window in X.
 
 
