@@ -1,5 +1,10 @@
+## Somewhat deprecated, maybe use `pywinctl` instead or one of the solutions in https://stackoverflow.com/q/10266281/5267751
+
+-----
+
 # getactivewindow-x
 Separate component to get information on the active window in X.
+
 
 ### Why?
 
@@ -8,8 +13,6 @@ In an attempt to be portable between operating systems.
 The user can install another package that provides the same interface.
 
 ### Internal details
-
-Use a fork of `python-libxdo`.
 
 There's another branch [user202729/getactivewindow-x at spawn-xdotool-xprop-process](https://github.com/user202729/getactivewindow-x/tree/spawn-xdotool-xprop-process)
 that uses subprocess, `xdotool` and `xprop`.
