@@ -6,7 +6,6 @@ maybe use `pywinctl` instead or one of the solutions in https://stackoverflow.co
 
 See also https://github.com/Kalmat/PyWinCtl/issues/64
 
------
 
 Separate component to get information on the active window in X.
 
@@ -16,6 +15,15 @@ Separate component to get information on the active window in X.
 In an attempt to be portable between operating systems.
 
 The user can install another package that provides the same interface.
+
+### Important note
+
+Use python-xlib fork https://github.com/fransklaver/python-xlib/tree/randr-errors-inherit-xerror to avoid hang.
+
+```bash
+pip uninstall python-xlib
+pip install git+https://github.com/fransklaver/python-xlib.git@randr-errors-inherit-xerror
+```
 
 ### Internal details
 
